@@ -31,7 +31,7 @@ class AuthController < ApplicationController
   end
 
   def signout
-    if cognito_session_id = session[:cognito_session_id]
+    if (cognito_session_id = session[:cognito_session_id])
       cognito_session = CognitoSession.find(cognito_session_id) rescue nil
       cognito_session.destroy if cognito_session
       session.delete(:cognito_session_id)
@@ -41,7 +41,7 @@ class AuthController < ApplicationController
   end
 
   def lookup_auth_code(code)
-    client = new_cognito_client()
+    client = new_cognito_client
     client.get_pool_tokens(code)
   end
 end

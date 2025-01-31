@@ -5,7 +5,7 @@ class CognitoJwtKeysProvider
     @jwt_keys = nil
 
     def init(pool_id)
-      resp = Excon.get(key_url(pool_id))
+      resp = Excon.new(key_url(pool_id))
       keys = JSON.parse(resp.body)
       keymap = Hash[keys["keys"].map {|key|
                       [key["kid"], JSON::JWK.new(key)]

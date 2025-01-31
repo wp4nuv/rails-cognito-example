@@ -24,9 +24,7 @@ private
   def parse_token(tok_str)
     hdr = jwt_header(tok_str)
     key = @cognito_jwt_keys.get(hdr['kid'], hdr['alg'])
-    decoded = JSON::JWT.decode(tok_str, key)
-
-    decoded
+    JSON::JWT.decode(tok_str, key)
   end
 
   def jwt_header(jwt_string)

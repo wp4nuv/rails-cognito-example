@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
       begin
         cognito_session = CognitoSession.find(session[:cognito_session_id])
       rescue ActiveRecord::RecordNotFound
+        Rails.logger.info("Record Not Found.")
       end
     end
 
@@ -41,12 +42,12 @@ class ApplicationController < ActionController::Base
       @is_signed_in = true
       @current_user = cognito_session.user
       @cognito_session = cognito_session
-      return
+      nil
     end
   end
 
   def refresh_cognito_session(cognito_session)
-    client = new_cognito_client()
+    client = new_cognito_client
 
     resp = client.refresh_id_token(cognito_session.refresh_token)
 

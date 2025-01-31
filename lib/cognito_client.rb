@@ -19,7 +19,7 @@ class CognitoClient
       redirect_uri: @redirect_uri
     }
 
-    resp = Excon.post(token_uri,
+    resp = Excon.new(token_uri,
                       :user => @client_id,
                       :password => @client_secret,
                       :body => URI.encode_www_form(params),
@@ -49,7 +49,7 @@ class CognitoClient
       "Content-Type": "application/x-amz-json-1.1"
     }
 
-    resp = Excon.post(CognitoUrls.refresh_token_uri,
+    resp = Excon.new(CognitoUrls.refresh_token_uri,
                       :headers => hdrs,
                       :body => params.to_json)
     if resp.status != 200
