@@ -41,6 +41,10 @@ gem 'bootsnap'
 # CVE-2019-5477
 gem 'nokogiri'
 
+# add OAUTH2 gems to simplify process
+gem "doorkeeper"
+gem "oauth2"
+
 group :production do
   gem 'pg'
 end
