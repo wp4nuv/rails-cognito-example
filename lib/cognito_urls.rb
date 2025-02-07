@@ -28,13 +28,13 @@ class CognitoUrls
     end
 
     def token_uri
-      URI.join(@base_oauth_uri, TOKEN_PATH).to_s
+      URI.join(@base_idp_uri, TOKEN_PATH).to_s
     end
 
     def login_uri(app_client_id, redirect_uri)
       path = "%s?response_type=code&client_id=%s&redirect_uri=%s" %
         [LOGIN_PATH, app_client_id, redirect_uri]
-      URI.join(@base_oauth_uri, path).to_s
+      URI.join(@base_idp_uri, path).to_s
     end
 
     def logout_uri(app_client_id, redirect_uri)
