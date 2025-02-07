@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>RailsCognitoUserPoolExample</title>
+    <title>Rails Cognito User Pool Example</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -18,7 +18,7 @@
       <header>
         <a href="#" class="logo">Rails Cognito Example</a>
       </header>
-        <% if (!@is_signed_in) %>
+        <% if !@is_signed_in %>
           <a href="<%= signin_path %>" class="button">Sign In</a>
           <a href="<%= signup_path %>" class="button">Sign Up</a>
         <% else %>
