@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def signin
-    redirect_to cognito_signin_url
+    redirect_to(cognito_signin_url, allow_other_host: true)
   end
 
   def signout
