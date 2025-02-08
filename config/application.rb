@@ -1,6 +1,6 @@
 require_relative "boot"
-
 require "rails/all"
+
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -22,6 +22,7 @@ module RailsCognitoUserPoolExample
     # in config/environments, which are processed later.
     #
     config.time_zone = "Eastern Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    Aws.config[:region] = "us-east-1"
+     # config.eager_load_paths << Rails.root.join("extras")
   end
 end

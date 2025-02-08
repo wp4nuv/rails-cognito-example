@@ -1,14 +1,31 @@
 # require "cognito_jwt_keys"
+require "cognito_manager"
 require "cognito_pool_tokens"
 require "cognito_urls"
 
 class CognitoClient
 
   def initialize(params = {})
+    @client_id = params[:client_id] || ENV['AWS_COGNITO_APP_CLIENT_ID']
+    @pool_id = params[:pool_id] || ENV['AWS_COGNITO_POOL_ID']
+    @client_id = params[:client_id] || ENV['AWS_COGNITO_APP_CLIENT_ID']
+    cognito_client = Aws::CognitoIdentityCredentials(@pool_id, Aws::CognitoIdentity::Client.new(Aws.config[:region]))
+    manager = CognitoManager.new(cognito_client)
+    manager.list_user_pools
+=begin
+var (
+    clientID     = "3fmu81rd31pna82uujpdccu6vn"
+    clientSecret = "<client secret>"
+    redirectURL  = "https://d84l1y8p4kdic.cloudfront.net"
+    issuerURL    = "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_Xhb8xytmT"
+    provider     *oidc.Provider
+    oauth2Config oauth2.Config
+)
     @pool_id = params[:pool_id] || ENV['AWS_COGNITO_POOL_ID']
     @client_id = params[:client_id] || ENV['AWS_COGNITO_APP_CLIENT_ID']
     @client_secret = params[:client_secret] || ENV['AWS_COGNITO_APP_CLIENT_SECRET']
     @redirect_uri = params[:redirect_uri]
+=end
   end
 
   def get_pool_tokens(authorization_code)

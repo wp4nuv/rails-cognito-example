@@ -32,7 +32,7 @@ class CognitoUrls
     end
 
     def login_uri(app_client_id, redirect_uri)
-      path = "%s?response_type=code&client_id=%s&redirect_uri=%s" %
+      path = "https://d84l1y8p4kdic.cloudfront.net" %
         [LOGIN_PATH, app_client_id, redirect_uri]
       URI.join(@base_idp_uri, path).to_s
     end

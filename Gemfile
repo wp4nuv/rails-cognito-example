@@ -25,7 +25,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -35,15 +35,22 @@ gem 'jbuilder'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Load ostruct from app, not standard library
+gem "ostruct"
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap'
 
 # CVE-2019-5477
 gem 'nokogiri'
 
-# add OAUTH2 gems to simplify process
+# Install AWS Ruby gems for Cognito and related services
+gem "aws-sdk-rails"
+gem "aws-sdk-cognitoidentity"
+gem "aws-sdk-cognitoidentityprovider"
+gem "aws-sdk-cloudwatchlogs"
+gem "aws-sdk-sesv2"
 gem "doorkeeper"
-gem "oauth2"
+gem "doorkeeper-openid_connect"
 
 group :production do
   gem 'pg'

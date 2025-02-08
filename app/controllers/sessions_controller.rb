@@ -15,7 +15,7 @@ private
 
   def cognito_signin_url
     CognitoUrls.login_uri(ENV['AWS_COGNITO_APP_CLIENT_ID'],
-                          signin_redirect_uri)
+                          "https://d84l1y8p4kdic.cloudfront.net")
   end
 
   def cognito_signup_url
